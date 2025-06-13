@@ -36,6 +36,7 @@ private:
 	void CutWords(const string& input);
 	char GetLastChar(const string& word);
 	bool BuildChain();
+	bool Correct(const string& word) const;
 public:
 	void InputFromFile(const string& filename);
 	DoubleLinkedList Solution();
