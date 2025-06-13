@@ -80,7 +80,12 @@ void WordGame::CutWords(const string& input)//разделает строку н
 	string word;
 	while (iss >> word)
 	{
-		words.push_back(word);
+		if (Correct(word)) {
+			words.push_back(word);
+		}
+		else {
+			cerr << "Предупреждение: слово '" << word << "' содержит недопустимые символы и будет пропущено" << endl;
+		}
 	}
 }
 
@@ -111,6 +116,17 @@ char WordGame::GetLastChar(const string& word)//получает последн�
 		return word[word.size() - 2];
 	}
 	return last;
+}
+bool WordGame::Correct(const string& word) const
+{
+	if (word.empty()) return false;
+	for (char ch : word)
+	{
+		if (!(ch= 'а' && ch <= 'я')) {
+			return false;
+		}
+	}
+	return true;
 }
 bool WordGame::BuildChain()
 {
